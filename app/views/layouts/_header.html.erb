@@ -1,0 +1,40 @@
+<header class="shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#a9a9a9;">
+    <div class="container">
+      <div>
+        <span class="text-center ml-5">eiga</span>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+          <li class="mr-3">
+            <%= link_to "新規登録", new_user_registration_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+          </li>
+          <li class="mr-3">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+          </li>
+        <% elsif admin_signed_in? %>
+          </li>
+          <li class="mr-3">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+          </li>
+        <% else %>
+          <li class="mr-3">
+            <%= link_to "About", about_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+          </li>
+          <li class="mr-3">
+            <%= link_to "新規登録", new_user_registration_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+          </li>
+          <li class="mr-3">
+            <%= link_to "ログイン", new_user_session_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
