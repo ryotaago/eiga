@@ -1,4 +1,5 @@
 <div class = "container">
+
  <div class = "row text-center">
     <div class = "col-md-12 my-3">
       <div class="search">
@@ -8,25 +9,30 @@
         <% end %>
       </div>
     </div>
+ </div>
 
-<div class = "row">
+<div class = "row justify-content-center">
     <% @movies.each do |movie| %>
-        <div class = "col-md-3 my-3">
-            <p><%= movie['title'] %></p>
+        <div class = "col-md-3 my-3 text-center">
+            <div class ="card border-secondary mb-3">
+                <div class ="card-header">
             <%= link_to movie_path(movie['id']) do %>
                 <% if movie['poster_path'] %>
                     <p><%= image_tag 'https://image.tmdb.org/t/p/w342' + movie['poster_path'],class: "card-img" %></p>
                 <% end %>
             <% end %>
-            <p><%= link_to "詳細へ", admin_movie_path(movie['id']) %></p>
+                </div>
+            <div class="card-body">
+                <p class="card-text"><%= link_to movie['title'], admin_movie_path(movie['id']), class:"btn btn-link" %></p>
+            </div>
+            </div>
         </div>
-    <% end %>
+  <% end %>
 </div>
 
-  <div class = "row mx-auto">
-    <div class = "my-5 text-center">
-    <h3> <%= paginate @movies %></h3>
-   </div>
+  <div class = "row">
+    <div class = "my-5 text-center" style="max-width: 500px; margin: 0 auto;">
+     <h3> <%= paginate @movies %></h3>
+    </div>
   </div>
- </div>
 </div>

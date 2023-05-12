@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_10_094214) do
+ActiveRecord::Schema.define(version: 2023_05_11_072258) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2023_05_10_094214) do
     t.integer "movie_id"
     t.string "poster_path"
     t.index ["movie_id"], name: "index_movies_on_movie_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.string "image"
+    t.text "overview"
+    t.text "contents"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "reviews", force: :cascade do |t|

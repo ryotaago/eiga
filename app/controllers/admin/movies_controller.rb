@@ -31,10 +31,19 @@ class Admin::MoviesController < ApplicationController
     @movie = JSON.parse(Net::HTTP.get(URI.parse(url)))
   end
 
-  def new
-  end
-
   def create
+  # APIからデータを直接カラムに保存する
+  movie = params [:movie]
+  Movie.new(
+  name: movie['title'],
+  year: movie['release_date'],
+  genre_name: movie ['genres'] [0] ['name'],
+  image: movie['poster_path'],
+  overview: movie['overview'],
+  runtime: movie['runtime'],
+  )
+  .save
+  redirect_to admin_movies_path
   end
 
   def edit
@@ -46,3 +55,4 @@ class Admin::MoviesController < ApplicationController
   def destroy
   end
 end
+
