@@ -1,0 +1,26 @@
+<h3>投稿されたコメント一覧</h3>
+  <% if reviews.any? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>名前</th>
+          <th>評価</th>
+          <th>コメント</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% movie.reviews.each do |review| %>
+          <tr>
+            <td><%= review.user.name %></td>
+            <td><%= review.rating %></td>
+            <td><%= review.comment %></td>
+            <td><%= button_to '削除', movie_review_path(movie, review), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>まだコメントはありません。</p>
+  <% end %>
+</div>

@@ -42,7 +42,7 @@ class Admin::MoviesController < ApplicationController
   overview: movie['overview'],
   runtime: movie['runtime'],
   )
-  .save!
+  .save
   redirect_to admin_movies_path
   end
 

@@ -1,2 +1,27 @@
-<h1>User::Movies#show</h1>
-
+  <div class="container">
+  <div class="row">
+    <div class="col-md-3 my-5">
+      <p>タイトル:<%= @movie.title %></p>
+      <p>公開年:<%= @movie.year %></p>
+      <p>ジャンル:<%= @movie.genres_name %></p>
+      <p>上映時間:<%= @movie.runtime %>分</p>
+      <%= image_tag 'https://image.tmdb.org/t/p/w342' + @movie.image, class: 'card-img' %>
+      <p><%= @movie['overview'] %></p>
+    </div>
+    <div class="col-md-9 my-5">
+      <h3>コメントを投稿する</h3>
+      <%= form_for [@movie, @review], url: movie_reviews_path(@movie) do |form| %>
+        <%= form.label :評価を５段階でつけてください！ %><br>
+        <% [[1, '1'], [2, '2'], [3, '3'], [4, '4'], [5, '5']].each do |option| %>
+          <%= form.radio_button :rating, option[0] %>
+          <%= form.label :rating, option[1], value: option[0] %>
+        <% end %>
+        <%= form.text_area :comment, placeholder: 'コメントを入力してください', rows: 4, class: 'form-control' %>
+        <%= form.submit 'コメントを投稿', class: 'btn btn-primary mt-3' %>
+      <% end %>
+      <div class="my-5">
+      <%= render 'list', movie:@movie, reviews:@reviews %>
+      </div>
+    </div>
+  </div>
+</div>
