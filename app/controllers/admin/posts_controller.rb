@@ -44,6 +44,6 @@ class Admin::PostsController < ApplicationController
 
     private
     def post_params
-        params.require(:post).permit(:title, :contents ,:image ,:overview)
+        params.require(:post).permit(:title, :contents, :image, :overview, :movie_id)
     end
 end

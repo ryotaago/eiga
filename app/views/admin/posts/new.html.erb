@@ -5,6 +5,7 @@
         <p><%= f.hidden_field :title, :size => 140, value: @movie['title']%></p>
 
         <p><%= image_tag 'https://image.tmdb.org/t/p/w200' + @movie['poster_path'] %></p>
+        <%= f.hidden_field :movie_id, value: @movie['id'] %>
         <p><%= f.hidden_field :image, value: 'https://image.tmdb.org/t/p/w200' + @movie['poster_path'] %></p>
 
         <p><%= f.label :overview %>:<%= @movie['overview']%></p>

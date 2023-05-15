@@ -4,7 +4,6 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :users, only: [:index, :show, :edit, :update]
     resources :movies, only:[:index, :show, :new, :create, :edit, :update, :destroy] do
-      resources :posts, only:[:index, :new, :create, :show, :edit, :update, :destroy]
       resources :reviews, only: [:index, :show, :edit, :update, :destroy]
     end
     resources :comments, only: [:index, :show, :destroy]
@@ -34,6 +33,9 @@ Rails.application.routes.draw do
   passwords: "users/passwords"
   }
 
+  devise_scope :user do
+  post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 

@@ -1,7 +1,5 @@
 class User::HomesController < ApplicationController
   def top
-  end
-
-  def about
+    @movies = Movie.all.order(created_at: :desc).limit(9)
   end
 end

@@ -1,5 +1,5 @@
 <header class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#a9a9a9;">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#999999;">
     <div class="container">
       <div>
         <span class="text-center ml-5">eiga</span>
@@ -11,13 +11,22 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
+          <div class="mt-2 ml-3">
+          <strong><%= current_user.name %></strong> , Welcome！
+          </div>
           <li class="mr-3">
-            <%= link_to "新規登録", new_user_registration_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+            <%= link_to "映画一覧", movies_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
           </li>
           <li class="mr-3">
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
           </li>
+          <li class="mr-3">
+            <%= link_to "About", about_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+          </li>
         <% elsif admin_signed_in? %>
+          <div class="mt-2 ml-3">
+          <strong>管理者ログイン中</strong>
+          </div>
           </li>
           <li class="mr-3">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
@@ -28,6 +37,9 @@
           </li>
           <li class="mr-3">
             <%= link_to "新規登録", new_user_registration_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+          </li>
+          <li class="mr-3">
+              <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
           </li>
           <li class="mr-3">
             <%= link_to "ログイン", new_user_session_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>

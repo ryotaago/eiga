@@ -33,26 +33,23 @@ class Admin::MoviesController < ApplicationController
 
   def create
   # APIからデータを直接カラムに保存する
-  movie = params [:movie]
+  movie = params[:movie]
   Movie.new(
-  name: movie['title'],
+  title: movie['title'],
   year: movie['release_date'],
-  genre_name: movie ['genres'] [0] ['name'],
+  genres_name: movie ['genres'] [0] ['name'],
   image: movie['poster_path'],
   overview: movie['overview'],
   runtime: movie['runtime'],
   )
-  .save
+  .save!
   redirect_to admin_movies_path
   end
 
-  def edit
-  end
 
   def update
   end
 
-  def destroy
-  end
+
 end
 
