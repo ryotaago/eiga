@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user_or_admin!, except: [:top, :about]
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_search
   helper_method :guest_user?
 
   def authenticate_user_or_admin!
@@ -12,12 +13,16 @@ class ApplicationController < ActionController::Base
   end
 
   end
-  
-  def after_sign_in_path_for(resource) 
+
+  def set_search
+    @q_header = Movie.ransack(params[:q_header])
+  end
+
+  def after_sign_in_path_for(resource)
     movies_path
   end
-  
-  
+
+
   def guest_user?
     !user_signed_in?
   end

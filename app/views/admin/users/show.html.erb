@@ -1,2 +1,20 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">ユーザー詳細</h5>
+        </div>
+        <div class="card-body">
+          <p><strong>名前:</strong> <%= @user.name %></p>
+          <p><strong>メールアドレス:</strong> <%= @user.email %></p>
+          <!-- 他のユーザー詳細情報を表示する場合はここに追加 -->
+        </div>
+        <div class="card-footer">
+          <%= link_to '編集', edit_admin_user_path(@user), class: 'btn btn-primary' %>
+          <%= link_to '一覧に戻る', admin_users_path, class: 'btn btn-secondary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

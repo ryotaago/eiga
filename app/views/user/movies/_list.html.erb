@@ -12,10 +12,12 @@
       <tbody>
         <% movie.reviews.each do |review| %>
           <tr>
-            <td><%= review.user.name %></td>
+            <td><%= link_to review.user.name, user_users_show_path(params: { id: review.user.id }) %></td>
             <td><%= review.rating %></td>
             <td><%= review.comment %></td>
+            <% if review.user == current_user %>
             <td><%= button_to '削除', movie_review_path(movie, review), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm' %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

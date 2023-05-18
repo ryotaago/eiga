@@ -1,0 +1,26 @@
+<style>
+  .title-link:hover {
+    color: blue;
+  }
+</style>
+
+<div class="container">
+  <h1 class="my-4"><%= @user.name %>のマイページ</h1>
+
+  <h2 class="mb-3">投稿したコメント一覧</h2>
+  <% if @reviews.any? %>
+    <ul class="list-group">
+      <% @reviews.each do |review| %>
+        <li class="list-group-item mb-3">
+          <h4 class="mb-1">
+            <%= link_to review.movie.title, movie_path(review.movie), class: "text-decoration-none title-link" %>
+          </h4>
+          <p class="mb-1">評価: <%= review.rating %></p>
+          <p class="mb-3">コメント: <%= review.comment %></p>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>まだコメントはありません。</p>
+  <% end %>
+</div>

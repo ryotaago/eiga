@@ -1,0 +1,16 @@
+<!-- _search.html.erb -->
+<%= search_form_for @q.result, url: url, html: { class: 'form-inline mt-2 mt-md-0' } do |f| %>
+  <div class="form-group">
+    <%= f.label :title_cont, 'タイトル', class: 'mr-2' %>
+    <%= f.search_field :title_cont, class: 'form-control', placeholder: 'タイトルを入力' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :genres_name_cont, 'ジャンル', class: 'mr-2 ml-3' %>
+    <%= f.collection_select :genres_name_cont, { include_blank: '指定なし' }, { class: 'form-control' } %>
+  </div>
+  <div class="form-group ml-3">
+    <%= f.label :rating_gteq, '評価', class: 'mr-2' %>
+    <%= f.select :rating_gteq, options_for_select((1..5).map { |r| [r, r] }, q.rating_gteq), { include_blank: '指定なし' }, { class: 'form-control' } %>
+  </div>
+  <%= f.submit '検索', class: 'btn btn-primary ml-3' %>
+<% end %>

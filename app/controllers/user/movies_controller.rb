@@ -1,6 +1,8 @@
 class User::MoviesController < ApplicationController
+
   def index
-    @movies = Movie.all.page(params[:page]).per(20)
+    @q_header = Movie.ransack(params[:q])
+    @movies = @q_header.result(distinct: true).order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def show
@@ -19,11 +21,9 @@ class User::MoviesController < ApplicationController
     end
   end
 
-
   private
 
   def review_params
     params.require(:review).permit(:rating, :comment)
   end
-
 end

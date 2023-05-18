@@ -1,2 +1,29 @@
-<h1>Admin::Reviews#index</h1>
-<p>Find me in app/views/admin/reviews/index.html.erb</p>
+<div class="container mt-4">
+  <h1>レビュー一覧</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>映画</th>
+        <th>評価</th>
+        <th>コメント</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= review.movie.title %></td>
+          <td><%= review.rating %></td>
+          <td><%= review.comment %></td>
+          <td>
+            <div class="btn-group" role="group">
+              <%= link_to '編集', edit_admin_review_path(id: review.id), class: 'btn btn-secondary btn-sm mr-1' %>
+              <%= button_to '削除', admin_review_path(id: review.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm mr-1' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @reviews, outer_window: 2, inner_window: 1, previous_label: '<', next_label: '>', class: 'pagination justify-content-center' %>
+</div>

@@ -15,14 +15,14 @@ class User::ReviewsController < ApplicationController
   end
 
   def destroy
-  @review = Review.find_by(id: params[:id])
-  if @review
+  @review = Review.find(params[:id])
+  if @review.user == current_user
     @review.destroy
-    redirect_to movie_path(@review.movie), notice: 'コメントが削除されました。'
+    redirect_to movie_path(@review.movie), notice: 'レビューが削除されました。'
   else
-    redirect_to movie_path(params[:movie_id]), alert: '削除するコメントが見つかりませんでした。'
+    redirect_to movie_path(@review.movie), alert: '他のユーザーのレビューは削除できません。'
   end
-end
+  end
 
   private
 
