@@ -6,7 +6,7 @@
               <%= link_to movie_path(movie['id']) do %>
               <%= image_tag 'https://image.tmdb.org/t/p/w342' + movie.image, class: 'card-img' %>
               <% end %>
-              <div class="card-body">
+              <div class="card-body d-flex justify-content-center align-items-end">
                 <h5 class="card-title"><%= link_to movie.title, movie_path(movie) %></h5>
               </div>
             </div>

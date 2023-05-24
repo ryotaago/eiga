@@ -8,15 +8,17 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <style>
-     header{font-family: 'Noto Serif JP', serif;}
-    </style>
   </head>
-
   <body style="background-color:white">
     <header>
-      <%= render 'layouts/header' %>
+      <style>
+       header{font-family: 'Noto Serif JP', serif;}
+      </style>
+        <%= render 'layouts/header' %>
     </header>
+    <div>
+      <%= flash[:notice] %>
+    </div>
 
     <main>
     <%= yield %>

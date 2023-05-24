@@ -1,8 +1,8 @@
 <div class="d-flex">
       <%= search_form_for @q_header, url: movies_path, class: "form-inline mt-1" do |f| %>
       <%= f.select :genres_name_eq, Movie.distinct.order(:genres_name).pluck(:genres_name), {}, {class: "form-control"} %>
-      <%= f.search_field :title_or_genres_name_or_overview_cont,class: "form-control me-sm-3 ml-3", placeholder: "Search" %>
-      <%= button_tag type: 'submit', class: "btn btn-secondary btn-sm my-2 my-sm-0 mr-2" do %>
+      <%= f.search_field :title_or_genres_name_or_overview_cont,class: "form-control me-sm-3 ml-3 mr-2", placeholder: "Search" %>
+      <%= button_tag type: 'submit', class: "btn btn-light btn-sm my-2 my-sm-0" do %>
   <i class="fas fa-search fa-rotate-90"></i>
       <% end %>
       <% end %>

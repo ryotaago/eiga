@@ -8,6 +8,7 @@
         <div class="card-body">
           <p><strong>名前:</strong> <%= @user.name %></p>
           <p><strong>メールアドレス:</strong> <%= @user.email %></p>
+          <p><strong>会員ステータス:</strong> <%= @user.is_active ? '有効' : '退会' %></p>
           <!-- 他のユーザー詳細情報を表示する場合はここに追加 -->
         </div>
         <div class="card-footer">

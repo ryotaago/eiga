@@ -1,64 +1,80 @@
-<header class="shadow-sm">
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#999999;">
-    <div class="container">
-      <div>
-        <span class="text-center ml-5">eiga</span>
-      </div>
+<head>
+<style>
+  .logo-text {
+  font-family: "Arial", sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  animation: neonEffect 1.5s ease-in-out infinite alternate;
+}
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-          <% if user_signed_in? %>
-          <div class="mt-2 ml-3">
-          <strong><%= current_user.name %></strong> , Welcome！
-          </div>
-          <li class="mr-3">
-            <%= link_to "映画一覧", movies_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "my page", user_users_show_path(id: current_user.id),class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-        <% elsif admin_signed_in? %>
-          <div class="mt-2 ml-3">
-          <strong>管理者ログイン中</strong>
-          </div>
-          </li>
-          <li class="mr-3">
-            <%= link_to "user一覧", admin_users_path, class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "review一覧", admin_reviews_path, class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-        <% else %>
-          <li class="mr-3">
-            <%= link_to "新規登録", new_user_registration_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-              <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-          <li class="mr-3">
-            <%= link_to "ログイン", new_user_session_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
-          </li>
-        <% end %>
-        </ul>
-         <div class="d-flex">
-            <%= search_form_for @q_header, url: movies_path, class: "form-inline mt-1" do |f| %>
-            <%= f.select :genres_name_eq, Movie.distinct.order(:genres_name).pluck(:genres_name), {}, {class: "form-control"} %>
-            <%= f.search_field :title_or_genres_name_or_overview_cont,class: "form-control me-sm-3 ml-3", placeholder: "Search" %>
-            <%= button_tag type: 'submit', class: "btn btn-secondary btn-sm my-2 my-sm-0 mr-2" do %>
-         <i class="fas fa-search fa-rotate-90"></i>
-          <% end %>
-          <% end %>
-          </div>
-      </div>
+@keyframes neonEffect {
+  from {
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #ff00de, 0 0 80px #ff00de, 0 0 90px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+  }
+  to {
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #00c3ff, 0 0 80px #00c3ff, 0 0 90px #00c3ff, 0 0 100px #00c3ff, 0 0 150px #00c3ff;
+  }
+}
+
+</style>
+</head>
+<header class="shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#000000;">
+    <div class="ml-5">
+      <a class="navbar-brand" href="/">
+      <span class="logo-text">eiga</span>
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+        <div class="text-light mt-2 ml-3">
+        <strong><%= current_user.name %></strong> , Welcome！
+        </div>
+        <li class="mr-3">
+          <%= link_to "映画一覧", movies_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "my page", user_users_show_path(id: current_user.id),class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+      <% elsif admin_signed_in? %>
+        <div class="mt-2 ml-3">
+        <strong>管理者ログイン中</strong>
+        </div>
+        </li>
+        <li class="mr-3">
+          <%= link_to "NEW MOVIE", admin_movies_path, class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "user一覧", admin_users_path, class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "review一覧", admin_reviews_path, class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+      <% else %>
+        <li class="mr-3">
+          <%= link_to "新規登録", new_user_registration_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+        <li class="mr-3">
+          <%= link_to "ログイン", new_user_session_path,class: 'nav-link text-body mx-1 nav-link btn btn-light btn-sm mr-2' %>
+        </li>
+      <% end %>
+      </ul>
+      <%= render 'user/homes/search', q_header: @q_header %>
     </div>
   </nav>
 </header>

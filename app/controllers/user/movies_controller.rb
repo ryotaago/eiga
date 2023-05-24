@@ -8,7 +8,7 @@ class User::MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @review = Review.new
-    @reviews = Review.all
+    @reviews = @movie.reviews.includes(:user).where(user: {is_active: true}).order(created_at: :desc)
   end
 
   def create_review
