@@ -15,7 +15,7 @@
           <h4 class="mb-1">
             <%= link_to review.movie.title, movie_path(review.movie), class: "text-decoration-none title-link" %>
           </h4>
-          <p class="mb-1">評価: <%= review.rating %></p>
+          <p class="mb-1">評価: <%= review.rating %>/5点</p>
           <p class="mb-3">コメント: <%= review.comment %></p>
         </li>
       <% end %>

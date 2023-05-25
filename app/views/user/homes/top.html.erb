@@ -1,13 +1,34 @@
+<head>
+<style>
+  .logo-text {
+  font-family: "Arial", sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  animation: neonEffect 1.5s ease-in-out infinite alternate;
+}
 
+@keyframes neonEffect {
+  from {
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #ff00de, 0 0 80px #ff00de, 0 0 90px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+  }
+  to {
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 40px #00c3ff, 0 0 80px #00c3ff, 0 0 90px #00c3ff, 0 0 100px #00c3ff, 0 0 150px #00c3ff;
+  }
+}
+
+</style>
+</head>
   <div class="jumbotron bg-image d-flex align-items-center" style = "background-image: url('<%= asset_path 'eiga.jpg' %>'); background-size: cover; width: 100%; height: 800px; margin-bottom: 0;">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="text-center mx-auto text-light">
-            <h1 class="display-4">Welcome to Movie Review App!</h1>
+            <p class="logo-text ">Welcome to Movie Review Eiga!</p>
             <p class="lead">映画レビューを読んだり書いたりできるサイトです！今すぐサインアップして始めましょう!</p>
             <p class="mb-5">お試しで試したい方は上のゲストログインから！</p>
-            <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+            <%= link_to "Sign Up", new_user_registration_path, class: "logo-text" %>
           </div>
         </div>
       </div>

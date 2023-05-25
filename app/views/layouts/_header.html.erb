@@ -74,7 +74,10 @@
         </li>
       <% end %>
       </ul>
+      <% if user_signed_in? %>
       <%= render 'user/homes/search', q_header: @q_header %>
+      <% else %>
+      <% end %>
     </div>
   </nav>
 </header>
