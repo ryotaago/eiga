@@ -16,19 +16,21 @@
       </style>
         <%= render 'layouts/header' %>
     </header>
-    <div>
-      <%= flash[:notice] %>
+    <div style="background-color:#000000;">
+      <div class="text-light ml-5">
+        <%= flash[:notice] %>
+      </div>
     </div>
 
     <main>
     <%= yield %>
     </main>
 
-    <footer>
+    <div class="mt-5">
       <style>
         footer{font-family: 'Noto Serif JP', serif;}
       </style>
        <%= render 'layouts/footer' %>
-    </footer>
+    </div>
   </body>
 </html>
