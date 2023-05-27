@@ -1,4 +1,6 @@
-# eiga
+# EIGA
+<img width="1002" alt="スクリーンショット 2023-05-27 13 51 34" src="https://github.com/ryotaago/eiga/assets/126906924/3293501e-a37d-402e-82b7-14eb228da312">
+
 
 ## Movie Review Site
 ### このアプリケーションは、映画のレビューサイトです。ユーザーは映画に対して評価とコメントを投稿できます。また、管理者はユーザーやレビューを管理できます。
@@ -41,4 +43,5 @@
 - IDE：Cloud9
 
 ## 使用素材
-* 画像の投稿禁止
+* The Movie Database <br>https://www.themoviedb.org/
+* Unsplash <br>https://unsplash.com/ja
