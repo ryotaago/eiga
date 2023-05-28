@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<div class="container mt-4" style="min-height: 660px;">
   <h1>レビュー一覧</h1>
 
   <table class="table">
@@ -18,12 +18,16 @@
           <td>
             <div class="btn-group" role="group">
               <%= link_to '編集', edit_admin_review_path(id: review.id), class: 'btn btn-secondary btn-sm mr-1' %>
-              <%= button_to '削除', admin_review_path(id: review.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm mr-1' %>
+              <%= button_to '削除', admin_review_path(id: review.id), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger btn-sm mr-2' %>
             </div>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <%= paginate @reviews, outer_window: 2, inner_window: 1, previous_label: '<', next_label: '>', class: 'pagination justify-content-center' %>
+</div>
+<div class = "row">
+    <div class = "my-5 text-center" style="max-width: 500px; margin: 0 auto;">
+      <%= paginate @reviews %>
+    </div>
 </div>

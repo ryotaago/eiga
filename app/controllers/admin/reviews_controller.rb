@@ -3,7 +3,7 @@ class Admin::ReviewsController < ApplicationController
 
   def index
     @reviews = Review.includes(:movie).all
-    @reviews = Kaminari.paginate_array(@reviews).page(params[:page]).per(20)
+    @reviews = Kaminari.paginate_array(@reviews).page(params[:page]).per(10)
   end
 
   def show

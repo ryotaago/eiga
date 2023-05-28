@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = Kaminari.paginate_array(User.all).page(params[:page]).per(7)
+    @users = Kaminari.paginate_array(User.all).page(params[:page]).per(10)
   end
 
   def show

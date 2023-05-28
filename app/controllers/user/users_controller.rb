@@ -4,6 +4,6 @@ class User::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])  # レビューに関連するユーザーの情報を取得
-    @reviews = @user.reviews
+    @reviews = @user.reviews.page(params[:page]).per(5)
   end
 end
