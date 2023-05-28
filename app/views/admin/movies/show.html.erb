@@ -7,6 +7,5 @@
     <p><%= image_tag 'https://image.tmdb.org/t/p/w200' + @movie['poster_path'],class: "card-size" %></p>
     <% end %>
     <p><%= @movie['overview'] %></p>
-    <%#= link_to "投稿ページへ", new_post_path(movie_id: @movie['id']) %>
     <%= button_to "保存する", admin_movies_path(movie: @movie), method: :post, class:"btn btn-outline-success" %>
 </div>

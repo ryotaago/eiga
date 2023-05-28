@@ -6,16 +6,13 @@ class Admin::ReviewsController < ApplicationController
     @reviews = Kaminari.paginate_array(@reviews).page(params[:page]).per(10)
   end
 
-  def show
-  end
-
   def edit
     @review = Review.find(params[:id])
   end
 
   def update
     if @review.update(review_params)
-      redirect_to admin_movie_reviews_path(@review), notice: 'レビューが更新されました。'
+      redirect_to admin_reviews_path(@review), notice: 'レビューが更新されました。'
     else
       render :edit
     end
