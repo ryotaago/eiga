@@ -1,7 +1,4 @@
 class User::ReviewsController < ApplicationController
-  def new
-    @review = Review.new
-  end
 
   def create
     @movie = Movie.find(params[:movie_id])
@@ -10,7 +7,7 @@ class User::ReviewsController < ApplicationController
     if @review.save
       redirect_to movie_path(@movie), notice: 'コメントが作成されました。'
     else
-      render :new
+      redirect_to request.referer, alert: '入力してください！'
     end
   end
 

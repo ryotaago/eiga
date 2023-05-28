@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   attribute :is_active, :boolean
-  
+
   def username
     name
   end
