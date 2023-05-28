@@ -21,7 +21,7 @@ end
 
   namespace :admin do
     root to: 'homes#top'
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update, :destroy]
     resources :movies, only:[:index, :show, :new, :create, :edit, :update, :destroy]
     resources :reviews, only: [:index, :show, :edit, :update, :destroy]
   end
