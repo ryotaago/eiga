@@ -1,8 +1,8 @@
 <div class="movie-detail text-center mt-3">
     <h3>タイトル:<%= @movie['title'] %></h3>
-    <p>Year:<%= @movie['release_date'] %></p>
-    <p>Genres:<%= @movie['genres'][0]['name'] %></p>
-    <p>Runtime:<%= @movie['runtime'] %>分</p>
+    <p>公開年:<%= @movie['release_date'] %></p>
+    <p>ジャンル:<%= @movie['genres'][0]['name'] %></p>
+    <p>上映時間:<%= @movie['runtime'] %>分</p>
     <% if @movie['poster_path'] %>
     <p><%= image_tag 'https://image.tmdb.org/t/p/w200' + @movie['poster_path'],class: "card-size" %></p>
     <% end %>
